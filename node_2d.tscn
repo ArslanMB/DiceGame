@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://d307bt8jj0a11"]
+
+[ext_resource type="Texture2D" uid="uid://dlrtmhsg2a7dv" path="res://360_F_47714212_N5Pn5FA4YCIWxBrXHJjwL8e1FhoxVU0i.jpg" id="1_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://bgqv4nd5puk0p" path="res://dicegame_assets/board.png" id="2_kdubu"]
+[ext_resource type="Texture2D" uid="uid://76jbpb4rl38u" path="res://dicegame_assets/Capture d’écran 2026-02-11 215634.png" id="3_d21ai"]
+[ext_resource type="Texture2D" uid="uid://dyctrctp6pxxb" path="res://dicegame_assets/Capture d’écran 2026-02-11 215654.png" id="4_rj586"]
+[ext_resource type="Texture2D" uid="uid://dvdain5y43r1p" path="res://dicegame_assets/dice_box.png" id="5_4d7sh"]
+
+[node name="Node2D" type="Node2D" unique_id=1260045332]
+
+[node name="360F47714212N5Pn5fa4yciWxBrXhJjwL8e1FhoxVu0i" type="Sprite2D" parent="." unique_id=1594225194]
+position = Vector2(575, 321)
+scale = Vector2(2.1333334, 1.7833333)
+texture = ExtResource("1_q6r6c")
+
+[node name="Board" type="Sprite2D" parent="." unique_id=1682855318]
+position = Vector2(812, 206)
+scale = Vector2(0.8923205, 0.88730156)
+texture = ExtResource("2_kdubu")
+
+[node name="CaptureD’écran20260211215634" type="Sprite2D" parent="." unique_id=1421768843]
+position = Vector2(154, 209)
+scale = Vector2(0.8402062, 0.7357564)
+texture = ExtResource("3_d21ai")
+
+[node name="CaptureD’écran20260211215654" type="Sprite2D" parent="." unique_id=37064094]
+position = Vector2(155.00002, 510)
+scale = Vector2(0.87142855, 0.8497942)
+texture = ExtResource("4_rj586")
+
+[node name="DiceBox2" type="Sprite2D" parent="." unique_id=856429299]
+modulate = Color(1.1230263, 1.1230263, 1.1230263, 1)
+texture_filter = 1
+position = Vector2(747, 569.00006)
+rotation = 1.5707964
+scale = Vector2(0.5953761, 0.93540037)
+texture = ExtResource("5_4d7sh")

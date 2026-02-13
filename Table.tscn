@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cd537hivu20b4"]
+
+[ext_resource type="PackedScene" uid="uid://t5lnxm36cxqw" path="res://node_3d.tscn" id="2_muxx0"]
+[ext_resource type="Shader" uid="uid://bgawpdartoj78" path="res://shader.gdshader" id="3_561jp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_muxx0"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_561jp"]
+plane = Plane(0, 30, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8wof"]
+albedo_color = Color(0, 0.19215687, 0, 0.54901963)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ieyyn"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_561jp"]
+shader = ExtResource("3_561jp")
+shader_parameter/pixel_size = 2.0
+
+[node name="Node3D" type="Node3D" unique_id=452484812]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1179557057]
+physics_material_override = SubResource("PhysicsMaterial_muxx0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=349570344]
+shape = SubResource("WorldBoundaryShape3D_561jp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=88637832]
+material_override = SubResource("StandardMaterial3D_x8wof")
+mesh = SubResource("PlaneMesh_ieyyn")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1660652545]
+transform = Transform3D(1, 0, 0, 0, 0.7656404, 0.64326894, 0, -0.64326894, 0.7656404, -2.7998896, 26.21526, 28.975777)
+current = true
+fov = 100.0
+near = 0.054
+
+[node name="Dice" parent="." unique_id=1651538536 instance=ExtResource("2_muxx0")]
+transform = Transform3D(0.98843837, 0, -0.15162311, 0, 1, 0, 0.15162311, 0, 0.98843837, -1.3637838, 0, 8.076763)
+
+[node name="Dice2" parent="." unique_id=1720587242 instance=ExtResource("2_muxx0")]
+transform = Transform3D(0.87870884, 0, -0.47735816, 0, 1, 0, 0.47735816, 0, 0.87870884, 10.362936, 0, 8.61692)
+
+[node name="Dice3" parent="." unique_id=613574929 instance=ExtResource("2_muxx0")]
+transform = Transform3D(0.94929385, 0, 0.31439012, 0, 1, 0, -0.31439012, 0, 0.94929385, -27.141626, 0, 8.053169)
+
+[node name="Dice4" parent="." unique_id=514866171 instance=ExtResource("2_muxx0")]
+transform = Transform3D(0.9873087, 0, -0.15881291, 0, 1, 0, 0.15881291, 0, 0.9873087, 23.590294, 0, 9.181965)
+
+[node name="Dice5" parent="." unique_id=368596153 instance=ExtResource("2_muxx0")]
+transform = Transform3D(0.96717465, 0, 0.25411245, 0, 1, 0, -0.25411245, 0, 0.96717465, -13.883972, 0, 7.543666)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2083465420]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1429185939]
+material = SubResource("ShaderMaterial_561jp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=725934379]
+transform = Transform3D(0.0017103704, -0.99999857, 0, 0.99999857, 0.0017103704, 0, 0, 0, 1, 0, 40.307255, 16.115414)
+light_energy = 8.129
+light_size = 1.0
+omni_range = 268.347
