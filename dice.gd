@@ -13,7 +13,7 @@ func _ready():
 	# On initialise la position de repos à la position actuelle au départ
 	position_repos = global_position
 	entrer_en_idle()
-
+	
 func _input(event):
 	if event.is_action_pressed("ui_accept") or (event is InputEventMouseButton and event.pressed):
 		sortir_de_idle()
@@ -56,29 +56,28 @@ func _process(delta):
 		# Sécurité si chute
 		if global_position.y < -5:
 			entrer_en_idle()
+	print(get_value())
 			
-func obtenir_valeur_de():
-	# Les directions locales de ton cube (dépend de ton modèle .vox/.obj)
-	# L'ordre classique pour un dé standard :
-	var directions = {
-		Vector3.UP: 6,
-		Vector3.DOWN: 1,
-		Vector3.RIGHT: 3,
-		Vector3.LEFT: 4,
-		Vector3.BACK: 2,
-		Vector3.FORWARD: 5
-	}
+func get_value():
+	#the orientation [0,1]
+	var orientation = self.global_basis
 	
-	var max_dot = -1.0
-	var face_valeur = 1
+	#values
+	var faces = {
+	"4": orientation.y.y,
+	"1": -orientation.y.y,
+	"5": orientation.x.y,
+	"3": -orientation.x.y,
+	"2": orientation.z.y,
+	"6": -orientation.z.y
+}
 	
-	for dir in directions.keys():
-		# On transforme la direction locale en direction mondiale
-		var dir_mondiale = global_transform.basis * dir
-		# Produit scalaire : plus le dé est aligné avec le "Haut", plus le score est proche de 1
-		var dot = dir_mondiale.dot(Vector3.UP)
-		if dot > max_dot:
-			max_dot = dot
-			face_valeur = directions[dir]
+	var max_val = -1.0
+	var value = ""
+
+	for face in faces:
+		if faces[face] > max_val:
+			max_val = faces[face]
+			value = face
 	
-	return face_valeur
+	return int(value)

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://t5lnxm36cxqw"]
+[gd_scene load_steps=7 format=3 uid="uid://t5lnxm36cxqw"]
 
 [ext_resource type="Script" uid="uid://ble4d1ua3x60n" path="res://dice.gd" id="1_a0tk4"]
 [ext_resource type="Texture2D" uid="uid://dcftfo3mda62k" path="res://dicegame_assets/dice.png" id="2_a0tk4"]
@@ -8,22 +8,20 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
 albedo_texture = ExtResource("2_a0tk4")
-texture_filter = 0
-proximity_fade_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
 size = Vector3(6.2626343, 6.7764893, 6.1851807)
 
-[node name="Dice" type="RigidBody3D" unique_id=1651538536]
+[node name="Dice" type="RigidBody3D"]
 mass = 1.005
 physics_material_override = SubResource("PhysicsMaterial_noarx")
 gravity_scale = 1.385
 script = ExtResource("1_a0tk4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1738755858]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_a0tk4")
 mesh = ExtResource("3_r3fl7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1045643868]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022857666, 2.8882446, -0.17926025)
 shape = SubResource("BoxShape3D_r3fl7")
