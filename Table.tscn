@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd537hivu20b4"]
+[gd_scene load_steps=10 format=3 uid="uid://cd537hivu20b4"]
 
+[ext_resource type="Script" uid="uid://c0tqng7q70iu6" path="res://table.gd" id="1_x8wof"]
 [ext_resource type="PackedScene" uid="uid://t5lnxm36cxqw" path="res://node_3d.tscn" id="2_muxx0"]
 [ext_resource type="Shader" uid="uid://bgawpdartoj78" path="res://shader.gdshader" id="3_561jp"]
+[ext_resource type="PackedScene" uid="uid://daensnv3lrvcf" path="res://scorer.tscn" id="3_x8wof"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_muxx0"]
 
@@ -19,6 +21,7 @@ shader = ExtResource("3_561jp")
 shader_parameter/pixel_size = 2.0
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_x8wof")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_muxx0")
@@ -40,6 +43,7 @@ near = 0.054
 transform = Transform3D(0.98843837, 0, -0.15162311, 0, 1, 0, 0.15162311, 0, 0.98843837, -1.3637838, 0, 8.076763)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_561jp")
@@ -48,9 +52,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(0.0017103704, -0.99999857, 0, 0.99999857, 0.0017103704, 0, 0, 0, 1, 0, 40.307255, 16.115414)
 light_energy = 8.129
 light_size = 1.0
 omni_range = 268.347
+
+[node name="Dice2" parent="." instance=ExtResource("2_muxx0")]
+transform = Transform3D(0.98843837, 0, -0.15162311, 0, 1, 0, 0.15162311, 0, 0.98843837, -20, 0, 8.077)
+
+[node name="Dice3" parent="." instance=ExtResource("2_muxx0")]
+transform = Transform3D(0.98843837, 0, -0.15162311, 0, 1, 0, 0.15162311, 0, 0.98843837, 20, 0, 8.077)
+
+[node name="Scorer" parent="." instance=ExtResource("3_x8wof")]

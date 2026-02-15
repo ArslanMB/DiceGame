@@ -25,3 +25,6 @@ mesh = ExtResource("3_r3fl7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022857666, 2.8882446, -0.17926025)
 shape = SubResource("BoxShape3D_r3fl7")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

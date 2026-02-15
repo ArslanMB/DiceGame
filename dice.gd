@@ -7,6 +7,8 @@ extends RigidBody3D
 @export var position_repos: Vector3 = Vector3.ZERO
 var is_idle: bool = true
 var time_passed: float = 0.0
+var mouse_on = false
+var is_selected = false
 
 func _ready():
 	gravity_scale = 3.0
@@ -15,9 +17,16 @@ func _ready():
 	entrer_en_idle()
 	
 func _input(event):
-	if event.is_action_pressed("ui_accept") or (event is InputEventMouseButton and event.pressed):
+	if event.is_action_pressed("ui_accept"):
 		sortir_de_idle()
 		lancer_le_de()
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and  mouse_on and not is_selected:
+			print("dé sélectionné")
+			selected()
+		elif event.button_index == MOUSE_BUTTON_RIGHT and is_selected:
+			unselected()
+			
 
 func lancer_le_de():
 	is_idle = false
@@ -56,7 +65,6 @@ func _process(delta):
 		# Sécurité si chute
 		if global_position.y < -5:
 			entrer_en_idle()
-	print(get_value())
 			
 func get_value():
 	#the orientation [0,1]
@@ -81,3 +89,20 @@ func get_value():
 			value = face
 	
 	return int(value)
+
+func _on_mouse_entered():
+	mouse_on = true
+
+func _on_mouse_exited():
+	mouse_on = false
+	
+	
+func selected():
+	GameManager.selected_dices.append(self)
+	is_selected = true
+	scale = Vector3(1.1, 1.1, 1.1) # Petit effet de grossissement
+	
+func unselected():
+	GameManager.selected_dices.erase(self)
+	is_selected = false
+	scale = Vector3(1.0, 1.0, 1.0) # Retour à la normale
